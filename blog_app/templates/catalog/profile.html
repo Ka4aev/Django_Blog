@@ -1,0 +1,22 @@
+{% extends 'catalog/base_generic.html' %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+  <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-body">
+      <h2 class="card-title text-center">{{ user.full_name }}</h2>
+      {% if user.avatar %}
+        <div class="text-center mb-3">
+          <img src="{{ user.avatar.url }}" alt="Аватар" class="img-thumbnail" width="250">
+        </div>
+      {% endif %}
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Информация:</strong> {{ user.bio }}</p>
+      <div class="d-flex justify-content-between">
+        <a href="{% url 'edit_profile' %}" class="btn btn-outline-primary">Редактировать профиль</a>
+        <a href="{% url 'delete_profile' %}" class="btn btn-outline-danger">Удалить профиль</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
